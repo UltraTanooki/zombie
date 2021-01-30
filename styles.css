@@ -49,17 +49,15 @@ header
 
 canvas
 {
-  background-color:black;
-  /* grid-column:5/6;
-  grid-row:2/3; */
-  width:750px;
+    grid-row:2/3;
+
 }
 
 .container
 {
   display:grid;
   grid-template-columns:7% 20% 20% 5% 40% 7%;
-  grid-template-rows:10% 60% 20% 20% 50% 20% 100px;
+  grid-template-rows:125px 430px 100px 200px 200px 400px 200px 100px;
   row-gap:5px;
   margin-top:10px;
   font-size:2rem;
@@ -68,11 +66,12 @@ canvas
 .leadStory
 {
   grid-column:2/span 2;
-  grid-row:2/4;
+  grid-row:2/3;
   border:.5px solid black;
   display:grid;
   grid-template-columns: 40% 10% 10% 40%;
   grid-template-rows:40% 10% 50%;
+  height:auto;
 }
 
 .leadStory .img
@@ -92,10 +91,11 @@ canvas
   text-align: justify;
   padding:15px;
   grid-column:1/5;
-  font-size:.9rem;
+  font-size:1.2rem;
   column-count:2;
   column-gap: 20px;
   overflow:auto;
+  cursor:pointer;
 }
 
 .leadStory .titleBox
@@ -117,13 +117,16 @@ canvas
 .video
 {
   grid-column:5/6;
-  grid-row:2/3;
+  grid-row:2/4;
+  background-color:transparent;
+  display:grid;
+  grid-template-rows: 1fr auto 1fr;
   /* border:.5px solid blue; */
 }
 
 .ad
 {
-  grid-row:3/4;
+  grid-row:4/5;
   grid-column:5/6;
   display:grid;
   grid-template-columns: 253px auto;
@@ -167,10 +170,11 @@ canvas
   text-align: justify;
   padding:15px;
   grid-column:1/5;
-  font-size:1rem;
+  font-size:1.2rem;
   column-count:2;
   column-gap: 20px;
   overflow:auto;
+  cursor:pointer;
 }
 
 .subStory .titleContainer2
@@ -193,7 +197,7 @@ canvas
 .subTwo
 {
   grid-column:5/6;
-  grid-row:4/7;
+  grid-row:5/7;
   border:.5px solid purple;
   display:grid;
   grid-template-columns: 40% 10% 10% 40%;

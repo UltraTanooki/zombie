@@ -26,24 +26,24 @@ const drawBG=()=>{
 const writeHeadline=()=>{
   ctx.save();
   ctx.fillStyle="black";
-  ctx.font="24px Arial bolder";
-  ctx.fillText(slides[showing].headline,70,455);
+  ctx.font=24*s+"px Arial bolder";
+  ctx.fillText(slides[showing].headline,70*s,455*s);
   ctx.restore();
 }
 
 const drawBanner=()=>{
   ctx.fillStyle='black';
-  ctx.fillRect(595,335,130,60);
-  ctx.fillRect(10,365,730,10);
+  ctx.fillRect(595*s,335*s,130*s,60*s);
+  ctx.fillRect(10*s,365*s,730*s,10*s);
   ctx.fillStyle="rgba(0,0,0,.7)";
-  ctx.fillRect(10,370,730,150);
+  ctx.fillRect(10*s,370*s,730*s,150*s);
   ctx.fillStyle="red";
-  ctx.fillRect(10,370,730,60);
+  ctx.fillRect(10*s,370*s,730*s,60*s);
   ctx.fillStyle="white";
-  ctx.font="50px Arial bolder";
-  ctx.fillText('HEADLINES',30,415);
-  ctx.drawImage(fLogo.img,fLogo.x,fLogo.y,120,120);
-  ctx.fillRect(60,430,310,40);
+  ctx.font=50*s+"px Arial bolder";
+  ctx.fillText('HEADLINES',30*s,415*s);
+  ctx.drawImage(fLogo.img,fLogo.x,fLogo.y,120*s,120*s);
+  ctx.fillRect(60*s,430*s,310*s,40*s);
 }
 
 const drawBorder=()=>{

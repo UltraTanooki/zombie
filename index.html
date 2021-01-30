@@ -5,6 +5,11 @@
     <title>News Page</title>
     <style>
     body{box-sizing:border-box;}
+
+    canvas{
+      margin-top:50px;
+      border:1px solid black}
+
     .rulerContainer{
       display:grid;
       margin-left:auto;
@@ -93,7 +98,7 @@
     </style>
 
   </head>
-  <body style="text-align:center;">
+  <body style="text-align:center;" onload='checkSize()'>
     <div class="rulerContainer" style="">
 
       <div class="arrowRow">
@@ -249,6 +254,20 @@
         <div class="sixteenth" style="grid-column:143/144;"></div><div style="grid-column:143/144;grid-row:6/7;">9</div>
       </div>
     </div>
+
+    <canvas id="canvas" width="900" height="600"></canvas>
+
+    <script type="text/javascript">
+      let canv=document.getElementById('canvas');
+
+      const checkSize=()=>{
+        if(window.innerWidth != 1920){
+          let s=window.innerWidth/1920;
+          canv.width=canv.width*s;
+          canv.height=canv.height*s;
+        }
+      }
+    </script>
 
 
   </body>

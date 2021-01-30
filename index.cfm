@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>News Page</title>
+     <script defer src="stories.js"></script>
     <script defer src="scripts.js"></script>
     <script defer src="images.js"></script>
     <script defer src="monitor.js"></script>
@@ -16,8 +17,17 @@
 
     <div class="container">
 
-      <div class="walkea" style="grid-column:2/6;grid-row:1/2;box-sizing:border-box;border:.5px solid black">
-          <div class="walkeaLogo"></div>
+      <div class="walkea" style="grid-column:2/6;grid-row:1/2;display:grid;grid-display-columns:40% 1Fr;box-sizing:border-box;border:.5px solid black;background:linear-gradient(127deg,rgb(0,0,102),rgb(0,0,102),blue);">
+        <div style="grid-column:1/2;">
+          <img src='images\walkea-logo.png' style="height:120px;">
+        </div>
+
+          <div style="grid-column:2/3;display:grid">
+            <div style="align-self:center;font-size:3.5rem">
+              <div style="color:white;display:inline-block">Save Money and</div>
+               <div style="color:Gold;display:inline-block">Create a better everyday life</div>
+             </div>
+          </div>
       </div>
 
 
@@ -27,14 +37,7 @@
         <div class="titleBox">
           <div class="title">VACCINE CAUSES ZOMBIE EVENT</div>
         </div>
-        <div class="words">&nbsp&nbsp&nbspChaos has broken out across the nation as the vaccine that was meant to stop the pandemic seems to have initiated a zombie event.  “Three days after the vaccine, she was devoid
-          of everything that made her...her”, Florida resident Stacie Charlegmaine told us Friday.  Charlegmaine’s sister, Beverley, had recently been admitted to Baptismal Florida Hospital with symptoms of what is being
-          called as “the change” struck suddenly. Symptoms include the loss of all rational thought, increase of rage and violence, and a desire for human brains.  We are learning that lesser symptoms also include flu-like
-           congestion, sneezing, and headaches.  At this time, we do not know if it is contagious. Scenes like these are breaking out across the nation.  In Washington D.C., infected citizens were found scaling the walls at
-           the Capitol building and inciting violence against the capitol police.  The entire city of Seattle in Washington has been overrun with bands of zombies and residents have been urged to stay in their homes as the
-           streets are no longer safe. In what seems to be affecting about 40% of all that have received the vaccine, the change appears to occur anywhere between 3 and 20 days after receiving the second dose.  As over five
-            million vaccine doses have already been administered, the number of “zombies” is expected to reach at least two million by month's end.  The Center for Disease Control has put an emergency halt on any further
-             vaccine administration.  It is currently unknown what is causing the zombie reaction to the vaccine or how to predict its occurrence.
+        <div class="words" id="lead">
          </div>
       </div>
 
@@ -46,7 +49,13 @@
 
 
 
-      <div class="ad">Muskrat</div>
+      <div class="ad" style="display:grid;grid-display-columns:600px 1fr;grid-display-rows:95px 1fr 125px;background:linear-gradient(-55deg,rgba(0,0,0,.95),rgba(0,0,0,.95),rgba(0,0,139,.75));overflow:none">
+        <img src="images/muskRat-logo.png" alt="" style="grid-column:1/2;width:325px;height:200px;">
+        <div class="" style="grid-column:2/3;font-size:2.5rem;color:red;">
+            <div style="grid-row:1/2;border:.5px solid balck;">Muskrat communications</div>
+            <div style="grid-row:2/3; font-size:2.2rem;color:white">The happiest cell phones on earth</div>
+            <img src="images/earth.png" alt="" style="grid-row:3/4;align-self:end;border:.5px solid black">
+        </div></div>
       <!--- <div class="ad two">Musk-Rat</div> --->
 
 
@@ -55,10 +64,7 @@
         <div class="titleContainer2">
           <div class="titlewords2">The Scariest Place on Earth</div>
         </div>
-        <div class="story2">&nbsp&nbsp&nbspAmid the growing numbers of infected zombie-like humanoids roam the nation, California’s Disneyland resort has announced that they will be closing their doors for good.
-           The resort has remained closed since March of 2020, when they “temporarily” suspended business for the COVID-19 pandemic.  The west coast parks never re-opened and fell into socially distanced disrepair.
-            “It’s a shame,” stated Tadashi Hamada, a California resident and longtime annual passholder. “The Disney parks have always been the happiest, safest, most feel-good escape from the real world.”
-          Florida’s Walt Disney World resort has announced they will be temporarily shutting down as of January 17th.  Plans to reopen will be announced once more information on the zombie infection is known.
+        <div class="story2" id="story2">
         </div>
       </div>
 
@@ -81,8 +87,10 @@
         </div>
       </div>
 
-      <div class="classifieds" style="grid-column:2/4;grid-row:4/5;border:.5px solid black">
-        classifieds
+      <div class="classifieds" style="grid-column:2/4;grid-row:3/5;border:.5px solid black">
+        <div class="" style='width:100%;height:50px;line-height:50px;background-color:black;color:white;font-weight:bold;'>
+          Classifieds
+        </div>
       </div>
 
 
