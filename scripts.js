@@ -92,13 +92,14 @@ const convertStories=()=>{
       x=i.story;
   let arrayX=x.split(". ")
   for(index of arrayX){
-    if(edited.length>650){
+    if(edited.length>i.length){
       edited=edited + "<br> <strong> More... </strong>";
       break;
     }else{
       edited += index+". ";
     }
   }
+  document.getElementById(i.name+'Title').innerHTML=i.title;
   document.getElementById(i.name).innerHTML=edited;
   edited="";
   }
@@ -106,4 +107,23 @@ const convertStories=()=>{
   // ad array into new string to be displayed
   //if arrayX.length between 450-550. and add &nbsp MORE...
   //write to innerHTML of 'lead'
+}
+
+const storyOpen=(x)=>{
+  for(i of stories){
+    if(i.name==x){console.log('hello')
+    document.getElementById('storyTitle').innerHTML=i.title;
+      document.getElementById('story').innerHTML=i.story;
+      document.getElementById('storyHolder').style.display='block';
+      document.getElementById('filter').style.display='block';
+      window.scrollTo(0,0);
+      break;
+    }
+  }
+
+}
+
+const closeStory=()=>{console.log('closing')
+  document.getElementById('storyHolder').style.display='none';
+  document.getElementById('filter').style.display='none';
 }
