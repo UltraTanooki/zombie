@@ -10,6 +10,8 @@ let fps=30,fpsInterval,startTime,now,then,elapsed;
 const intialize=()=>{
   convertStories();
   testScreenSize();
+	adjustImgSizes();
+	canv.width=canv.width*s;canv.height=canv.height*s;
   fpsInterval=1000/fps;
   then=Date.now();
   startTime=then;
@@ -54,17 +56,15 @@ const testScreenSize=()=>{
 					canv.width=canv.width*.5;canv.height=canv.height*.5;
 					s=.5;
 					break;
-
 			}
-			adjustImgSizes();
+
 		}
     if(window.innerWidth != 1920){
 			let x=window.innerWidth/1920;
 			x=Math.round(100*x)/100;
 			s=x;
-			canv.width=canv.width*s;canv.height=canv.height*s;
-			adjustImgSizes();
 		}
+    console.log('s',s)
 }
 
  const adjustImgSizes=()=>{console.log('here');
