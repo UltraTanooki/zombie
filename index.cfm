@@ -4,12 +4,39 @@
     <meta charset="utf-8">
     <title>News Page</title>
      <script defer src="stories.js"></script>
-    <script defer src="scripts.js"></script>
+<!---    <script defer src="scripts.js"></script>--->
     <script defer src="images.js"></script>
-    <script defer src="monitor.js"></script>
+<!---    <script defer src="monitor.js"></script>--->
     <link rel="stylesheet" href="styles.css">
+    <style>
+    .flipBook{
+      height:45vh;
+      width:90%;
+      box-sizing:border-box;
+      border:4px solid black;
+      align-self:center;
+      justify-self:center;
+      display:grid;
+      grid-template-rows:32vh 5vh 3vh auto;
+    }
+    .redBar{
+      width:100%;
+      grid-row:2/3;
+      background-color:red;
+    }
+    .newsStoryTitle{
+      grid-row:3/4;
+      width:35%;
+      background-color:white;
+      font-size:1.2rem;
+      font-weight:bold;
+      margin-left:10%;
+      display:grid;
+      border:1px solid black;
+    }
+    </style>
   </head>
-  <body onload="intialize()">
+  <body onload="convertStories()">
 
     <div id="filter" class="filter" style=""></div>
 
@@ -32,7 +59,7 @@
           <img src='images\walkea-logo.png' style="height:120px;">
         </div>
 
-          <div style="grid-column:2/3;display:grid">
+          <div style="grid-column:2/3;grid-row:1/2;display:grid">
             <div style="align-self:center;font-size:3.5rem">
               <div style="color:white;display:inline-block">Save Money and</div>
                <div style="color:Gold;display:inline-block">Create a better everyday life</div>
@@ -53,8 +80,18 @@
       </div>
 
 
-      <div class="video">
+      <!--- <div class="video">
         <canvas id="canvas" width="750" height="500"></canvas>
+      </div> --->
+
+      <div style="grid-row:2/4;grid-column:5/6;border:2px solid black;display:grid">
+        <div class="flipBook">
+          <div class="redBar">
+          </div>
+          <div class="newsStoryTitle">
+            <div style="justify-self:center;align-self:center">Title</div>
+          </div>
+        </div>
       </div>
 
 
@@ -143,10 +180,55 @@
       </div>
 
 
-    <!--- </div> --->
+    <!--- </div>
     <div class="footer">
       AMDEKAI ©2021
-    </div>
+    </div>--->
           </div>
+
+    <script>
+    const convertStories=()=>{
+      let edited="";
+      for(i of stories){
+          x=i.story;
+      let arrayX=x.split(". ")
+      for(index of arrayX){
+        if(edited.length>i.length){
+          edited=edited + "<br> <strong> More... </strong>";
+          break;
+        }else{
+          edited += index+". ";
+        }
+      }
+      document.getElementById(i.name+'Title').innerHTML=i.title;
+      document.getElementById(i.name).innerHTML=edited;
+      edited="";
+      }
+      //convert story into an array
+      // ad array into new string to be displayed
+      //if arrayX.length between 450-550. and add &nbsp MORE...
+      //write to innerHTML of 'lead'
+    }
+
+    const storyOpen=(x)=>{
+      for(i of stories){
+        if(i.name==x){console.log('hello')
+        document.getElementById('storyTitle').innerHTML=i.title;
+          document.getElementById('story').innerHTML=i.story;
+          document.getElementById('storyHolder').style.display='block';
+          document.getElementById('filter').style.display='block';
+          window.scrollTo(0,0);
+          break;
+        }
+      }
+
+    }
+
+    const closeStory=()=>{console.log('closing')
+      document.getElementById('storyHolder').style.display='none';
+      document.getElementById('filter').style.display='none';
+    }
+
+    </script>
   </body>
 </html>

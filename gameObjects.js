@@ -3,6 +3,11 @@ console.log('objects connected');
 let foreLeft=new Image();foreLeft.src='gameImages/foreLeft.png';
 let foreRight=new Image();foreRight.src='gameImages/foreRight.png';
 
+let playerIdle=new Image();playerIdle.src='gameImages/playerIdle.png';
+
+let pIdle={x:400,y:300,w:82,y:115,currFrame:1,speed:3}
+let player={srcX:0,srcY:0,sheetW:820,sheetH:127,framecount:10,cols:10,currFrame:1,w:82,h:115}
+
 const foreGroundLeft={image:foreLeft,w:355,h:350,x:-10,y:454,location:'fore'}
 const foreGroundRight={image:foreRight,w:355,h:350,x:1210,y:454,location:'fore'}
 const midGroundLeft={image:foreLeft,w:355,h:350,x:100,y:200,location:'mid'}
@@ -13,11 +18,11 @@ const backGroundRight={image:foreRight,w:355,h:350,x:990,y:-50,location:'back'}
 const zomRight=new Image();zomRight.src="gameImages/zombiewalkright.png";
 const zomLeft=new Image();zomLeft.src="gameImages/zombiewalkLeft.png";
 
-let zom={x:0,y:233,w:48,h:95,dir:'right'};
-let zom2={x:1000,y:483,w:48,h:95,dir:'left'}
-let zombieRight={srcX:0,srcY:0,sheetW:785,sheetH:127,framecount:12,cols:12,currFrame:1,w:65,h:127,zX:500,zY:130}
+let zom={x:0,y:233,w:48,h:95,dir:'right',currFrame:1,location:'back',speed:2,update:7};
+let zom2={x:1000,y:483,w:48,h:95,dir:'left',currFrame:5,location:'mid',speed:3,update:5}
+let zombie={srcX:0,srcY:0,sheetW:785,sheetH:127,framecount:12,cols:12,currFrame:1,w:65,h:127,zX:500,zY:130}
 
-const zoms=[zom];
+const zoms=[zom,zom2];
 
 
 const setObjects=[foreGroundLeft,foreGroundRight,midGroundLeft,midGroundRight,backGroundLeft,backGroundRight]
@@ -61,19 +66,21 @@ const drawScene=()=>{
         break;
     }
   }
+  moveZoms();
   drawItems(back);
-    for(i of zoms){
-      if(i.y>=223 && i.y<=273){
-          drawZoms(i);
-      }
+  for(i of zoms){
+    if(i.location=='back'){
+      drawZom(i);
     }
+  }
   drawItems(mid);
-    for(i of zoms){
-      if(i.y>=463 && i.y<=533){console.log('i',i)
-      drawZoms(i);
-      }
+  for(i of zoms){
+    if(i.location=='mid'){
+      drawZom(i);
     }
+  }
   drawItems(fore);
+  drawPlayer();
 }
 
 const drawItems=(x)=>{
@@ -85,32 +92,73 @@ const drawItems=(x)=>{
 }
 
 let testX=0
-const drawZoms=(x)=>{
+// const drawZoms=(x)=>{
+//   ctx.save();
+// if(testX%3==0){
+//   updateFrame();
+// };
+// testX++;
+// if(zom.dir=='right'){
+//   ctx.drawImage(zomRight,zombie.srcX,zombie.srcY,zombie.w,zombie.h,x.x,x.y,x.w,x.h);
+//   x.x+=5;
+//   if(x.x>gcanv.width-65){
+//     x.dir='left';
+//   }
+// }else{
+//   ctx.drawImage(zomLeft,zombie.srcX,zombie.srcY,zombie.w,zombie.h,x.x,x.y,x.w,x.h);
+//   x.x-=5;
+//   if(x.x<0){
+//     x.dir='right';
+//   }
+// }
+//
+// ctx.restore();
+// }
+const moveZoms=()=>{
+  for(i of zoms){
+    if(i.dir=='right'){
+      if(i.x>gcanv.width-65){
+        i.dir='left';
+        i.x-=i.speed;
+      }else{
+        i.x+=i.speed;
+      }
+    }else{
+      if(i.x<0){
+        i.dir='right';
+        i.x+=i.speed;
+      }else{
+        i.x-=i.speed;
+      }
+    }
+  }
+}
+
+const drawPlayer=()=>{console.log('hit')
+  if(testX%4==0){
+    updateFrame(pIdle,player);
+    console.log(pIdle.currFrame);
+  };
+  ctx.drawImage(playerIdle,600,300,82,115);
+}
+
+const drawZom=(x)=>{
   ctx.save();
-if(testX%3==0){
-  updateFrame();
-};
-testX++;
-if(zom.dir=='right'){
-  ctx.drawImage(zomRight,zombieRight.srcX,zombieRight.srcY,zombieRight.w,zombieRight.h,x.x,x.y,x.w,x.h);
-  x.x+=5;
-  if(x.x>gcanv.width-65){
-    x.dir='left';
-  }
-}else{
-  ctx.drawImage(zomLeft,zombieRight.srcX,zombieRight.srcY,zombieRight.w,zombieRight.h,x.x,x.y,x.w,x.h);
-  x.x-=5;
-  if(x.x<0){
-    x.dir='right';
-  }
-}
-
-ctx.restore();
-}
+   if(testX%4==0){
+     updateFrame(x,zombie);
+   };
+   testX++;
+   if(x.dir=='right'){
+     ctx.drawImage(zomRight,zombie.srcX,zombie.srcY,zombie.w,zombie.h,x.x,x.y,x.w,x.h);
+   }else{
+     ctx.drawImage(zomLeft,zombie.srcX,zombie.srcY,zombie.w,zombie.h,x.x,x.y,x.w,x.h);
+   }
+   ctx.restore();
+ }
 
 
-const updateFrame=()=>{
-  zombieRight.currFrame=++zombieRight.currFrame%zombieRight.cols;
-  zombieRight.srcX=zombieRight.currFrame*zombieRight.w;
-  zombieRight.srcY=0;
+const updateFrame=(x,y)=>{
+  x.currFrame=++x.currFrame%y.cols;
+  y.srcX=x.currFrame*y.w;
+  y.srcY=0;
 }
